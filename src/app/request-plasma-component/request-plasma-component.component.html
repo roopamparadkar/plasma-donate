@@ -1,0 +1,33 @@
+<div *ngIf="!noResult" class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-card *ngFor="let plasma of plasmaToShow" class="example-card mb-4 mt-4 mx-auto">
+        <mat-card-header>
+          <div mat-card-avatar class="blood-group">
+            <p class="mat-display-2" matTooltip="Blood Group">
+              {{plasma.bloodGroup | uppercase}}
+            </p>
+          </div>
+          <mat-card-title>{{plasma.name | titlecase}} <span *ngIf="plasma.verified" ><mat-icon matTooltip="Verified Donor" class="verified-badge">health_and_safety</mat-icon></span></mat-card-title>
+          <mat-card-subtitle>{{plasma.phone}} | {{plasma.age}} ({{plasma.gender | titlecase }}) | {{plasma.city | titlecase}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-flat-button color="primary"><a href="tel:{{plasma.phone}}">Contact</a></button>
+          <!-- <button mat-stroked-button color="primary">Share</button> -->
+          <h3 class="plasma-time"><span><mat-icon>schedule</mat-icon></span> {{plasma.createdOn}}</h3>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<mat-spinner *ngIf="isloading" class="mx-auto mt-5"></mat-spinner>
+<div *ngIf="noResult" class="container text-center mt-3">
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="mat-display-4">Sorry!</p>
+      <p class="mat-display-3">We don't have any donors in <span class="mat-display-2">{{city}}</span></p>
+      <button class="w-100 mb-2 mt-5" routerLink="/" mat-flat-button color="primary">Home</button>
+    </div>
+  </div>
+</div>

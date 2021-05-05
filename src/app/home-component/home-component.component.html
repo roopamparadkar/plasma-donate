@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-12 text-center">
+      <p class="mat-display-1">Be A</p>
+      <p class="mat-display-2">Hero</p>
+      <p class="mat-display-3">Donate</p>
+      <p class="mat-display-4">Plasma</p>
+
+      <button class="w-100 mb-3" (click)="openDonatePlasmaDialog()" mat-flat-button color="primary">Register As Plasma Donor</button>
+
+      <h2>OR</h2>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Enter City Name</mat-label>
+        <input required type="text" matInput [formControl]="city" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete">
+          <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button [disabled]="city.invalid" class="w-100 mb-2" (click)="findPlasma()" mat-flat-button color="primary">Find Plasma</button>
+    </div>
+  </div>
+</div>

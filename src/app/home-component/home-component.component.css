@@ -1,0 +1,22 @@
+.action-buttons{
+    position: absolute;
+    bottom: 5%;
+}
+.mat-display-1{
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+.mat-display-3{
+    margin: 0 0 10px;
+    font-weight: 400;
+}
+.mat-display-2,.mat-display-4{
+    margin: 0 0 10px;
+    font-weight: 400;
+    color: #ff5252;
+}
+.mat-display-4{
+    margin-top: -10px;
+    font-size: 90px;
+
+}

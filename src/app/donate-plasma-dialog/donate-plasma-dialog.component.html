@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+    Donate Plasma
+    <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon">
+    <mat-icon (click)="closeForm()">close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="mt-3 mb-3" [formGroup]="donateForm" (ngSubmit)="submitForm()">
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Full Name</mat-label>
+                    <input name="Name" autocomplete="none" type="text" matInput placeholder="Full Name"
+                        formControlName="name" required>
+                    <mat-error>
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Mobile/Phone Number</mat-label>
+                    <input name="Phone" autocomplete="none" type="text" matInput placeholder="Mobile/Phone Number"
+                        formControlName="phone" required>
+                    <mat-error>
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Age</mat-label>
+                    <input name="Age" autocomplete="none" type="text" matInput placeholder="Age" formControlName="age"
+                        required>
+                    <mat-error>
+                        Required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Enter City</mat-label>
+                    <input type="text" matInput formControlName="city" autocomplete="none" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+                            {{city}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Blood Group</mat-label>
+                    <mat-select name="bloodGroup" formControlName="bloodGroup">
+                        <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup">
+                            {{bloodGroup}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-label>Select gender</mat-label>
+                <br>
+                <br>
+                <mat-radio-group color="primary" aria-label="Select an option" formControlName="gender">
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="other">Other</mat-radio-button>
+                </mat-radio-group>
+                <br>
+                <br>
+                <mat-checkbox color="primary" class="mb-4" formControlName="revealPhone">I am willing to show my number.</mat-checkbox>
+                <button [disabled]="donateForm.invalid" class="w-100" mat-raised-button color="primary">Donate</button>
+            </form>
+        </div>
+    </div>
+</div>
